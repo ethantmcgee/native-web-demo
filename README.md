@@ -42,10 +42,10 @@ authentication credentials.  The endpoint allows several parameters described be
 | -------------- | ------ | ---------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------- |
 | maxResults     | number | Controls the number of results per page                          | 10            | 0 - 50                                                                          |
 | order          | string | Determines the sort order                                        | relevance     | date(↑), rating(↑), relevance(↑), title(↓), videoCount(↑), viewCount(↑) |
-| pageToken      | string | Allows the user to return to the previous page or go to the next | null          |                                                                                 |
-| published.min  | string | Limit search to videos published after a date                    | null          | 1970-01-01T00:00:00Z                                                            |
-| published.max  | string | Limit search to videos published before a date                   | null          | 1970-01-01T00:00:00Z                                                            |
-| query          | string | The video search criteria                                        | null          |                                                                                 |
+| pageToken      | string | Allows the user to return to the previous page or go to the next |               |                                                                                 |
+| published.min  | string | Limit search to videos published after a date                    |               | 1970-01-01T00:00:00Z                                                            |
+| published.max  | string | Limit search to videos published before a date                   |               | 1970-01-01T00:00:00Z                                                            |
+| query          | string | The video search criteria                                        |               |                                                                                 |
 | safeSearch     | string | Whether safe search should be enabled during searching           | moderate      | moderate, none, strict                                                          |
 
 > Note: The sort order for each term is limited by YouTube's API to the direction indicated.
