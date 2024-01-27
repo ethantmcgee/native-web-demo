@@ -8,7 +8,7 @@ import "./search-results"
 import "./search-paging"
 import "./loading-wheel"
 
-const SEARCH_WORKER = "YOUR_WORKER_URL_HERE";
+const SEARCH_WORKER = "https://youtube-searcher.bulletshot60.workers.dev/";
 
 @customElement('youtube-search')
 export class YoutubeSearch extends LitElement {
@@ -16,6 +16,16 @@ export class YoutubeSearch extends LitElement {
 
   @state()
   protected _loading = true;
+  @state()
+  protected _page = true;
+  @state()
+  protected _perPage = true;
+  @state()
+  protected _nextToken = true;
+  @state()
+  protected _prevToken = true;
+  @state()
+  protected _search = true;
   
   getSearchResults() {
     if(this._loading) {
