@@ -10,8 +10,6 @@
     "copy-assets": "cp -r src/assets/* dist/assets",
     "copy-files": "npm run copy-assets",
     "init": "npm run clean-dist && npm run copy-files",
-    "lint:js": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
-    "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
     "analyze": "cem analyze --litelement",
     "start": "npm run init && concurrently -k -r \"tailwindcss -i src/tailwind.css -o src/tw.css --watch\" \"twlit --input src/tw.css --output src/tw.js\" \"parcel src/index.html\""
   },
@@ -63,11 +61,6 @@
   "prettier": {
     "singleQuote": true,
     "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "lint-staged": {
     "*.ts": [
