@@ -17,6 +17,7 @@ The project is also styled using [Tailwind CSS](https://tailwindcss.com/).
 1. Install [Node 20](https://nodejs.org/en) if you do not already have it (or use [nvm](https://github.com/nvm-sh/nvm)).
 1. Clone this repository.
 1. `cd` into the frontend folder.
+1. Run `npm i`.
 1. Run `npm run start`.
 
 ## Backend Setup
@@ -30,7 +31,7 @@ The project is also styled using [Tailwind CSS](https://tailwindcss.com/).
 1. Go to Cloudflare (or any other lambda provider).
 1. Create a new Worker.
 1. Paste the provided script (with your key) into the definition and deploy.
-1. The provided URL should be placed at the top of the `index.html` in the `frontend/src/search-base` folder.
+1. The provided URL should be placed at the top of the `search-base.ts` file in the `frontend/src/` folder.
 
 ## Backend API Details
 
