@@ -15,6 +15,13 @@ frontend/coverage/
 ## temp folders
 frontend/.tmp/
 
+## tailwind
+frontend/src/tw.css
+frontend/src/tw.js
+
+## parcel
+frontend/.parcel-cache
+
 # build
 frontend/_site/
 frontend/dist/
