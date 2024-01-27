@@ -9,64 +9,19 @@
     "clean-dist": "rm -rf dist && mkdir -p dist/assets",
     "copy-assets": "cp -r src/assets/* dist/assets",
     "copy-files": "npm run copy-assets",
-    "init": "npm run clean-dist && npm run copy-files",
-    "analyze": "cem analyze --litelement",
+    "init": "npm run clean-dist && npm run copy-files && tailwindcss -i src/tailwind.css -o src/tw.css",
     "start": "npm run init && concurrently -k -r \"tailwindcss -i src/tailwind.css -o src/tw.css --watch\" \"twlit --input src/tw.css --output src/tw.js\" \"parcel src/index.html\""
   },
   "dependencies": {
     "@vaadin/router": "^1.7.5",
-    "lit": "^2.0.2",
-    "twlit": "^0.0.1-alpha.37"
+    "lit": "^2.0.2"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.4.17",
-    "@open-wc/eslint-config": "^9.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.48.0",
-    "@typescript-eslint/parser": "^5.48.0",
     "concurrently": "^5.3.0",
-    "eslint": "^8.31.0",
-    "eslint-config-prettier": "^8.3.0",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
     "parcel": "^2.11.0",
-    "prettier": "^2.4.1",
     "tailwindcss": "^3.4.1",
     "tslib": "^2.3.1",
+    "twlit": "^0.0.1-alpha.37",
     "typescript": "^4.5.2"
-  },
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "extends": [
-      "@open-wc",
-      "prettier"
-    ],
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error"
-      ],
-      "import/no-unresolved": "off",
-      "import/extensions": [
-        "error",
-        "always",
-        {
-          "ignorePackages": true
-        }
-      ]
-    }
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
-  "customElements": "custom-elements.json"
+  }
 }

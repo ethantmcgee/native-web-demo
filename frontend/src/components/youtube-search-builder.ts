@@ -25,7 +25,6 @@ export class YoutubeSearchBuiler extends LitElement {
   }
   
   setProperty(field, value, alsoSearch) {
-    console.log(field, value, alsoSearch);
     this[field] = value;
     if(alsoSearch) {
       this.emitSearch();
@@ -79,18 +78,18 @@ export class YoutubeSearchBuiler extends LitElement {
         <div>
           <label for="publishedAfter" class="block text-sm font-medium leading-6 text-gray-900">Published After</label>
           <div class="mt-1">
-            <input type="date" name="publishedAfter" id="publishedAfter" class="block w-full rounded-md border-0 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="">
+            <input type="date" name="publishedAfter" id="publishedAfter" class="block w-full rounded-md border-0 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" @input=${(e) => this.setProperty("_publishedMin", e.target.value, true)}>
           </div>
         </div>
         <div>
           <label for="publishedBefore" class="block text-sm font-medium leading-6 text-gray-900">Published Before</label>
           <div class="mt-1">
-            <input type="date" name="publishedBefore" id="publishedAfter" class="block w-full rounded-md border-0 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="">
+            <input type="date" name="publishedBefore" id="publishedAfter" class="block w-full rounded-md border-0 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" @input=${(e) => this.setProperty("_publishedMax", e.target.value, true)}>
           </div>
         </div>
         <div>
           <label for="sortBy" class="block text-sm font-medium leading-6 text-gray-900">Sort By</label>
-          <select id="sortBy" name="sortBy" class="mt-1 block w-full rounded-md border-0 py-1 pl-1 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <select id="sortBy" name="sortBy" class="mt-1 block w-full rounded-md border-0 py-1 pl-1 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" @change=${(e) => this.setProperty("_order", e.target.options[e.target.selectedIndex].value, true)}>
             <option value="date">Date</option>
             <option value="rating">Rating</option>
             <option value="relevance" selected>Relevance</option>
@@ -101,7 +100,7 @@ export class YoutubeSearchBuiler extends LitElement {
         </div>
         <div>
           <label for="safesearch" class="block text-sm font-medium leading-6 text-gray-900">Safe Search</label>
-          <select id="safesearch" name="safesearch" class="mt-1 block w-full rounded-md border-0 py-1 pl-1 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <select id="safesearch" name="safesearch" class="mt-1 block w-full rounded-md border-0 py-1 pl-1 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" @change=${(e) => this.setProperty("_safeSearch", e.target.options[e.target.selectedIndex].value, true)}>
             <option value="off">Off</option>
             <option value="moderate" selected>Moderate</option>
             <option value="strict">Strict</option>
@@ -125,9 +124,9 @@ export class YoutubeSearchBuiler extends LitElement {
           <input
             type="text"
             class="block rounded-md border-0 px-3 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            @input=${(e) => setProperty("_query", e.target.value, false)}
+            @input=${(e) => this.setProperty("_query", e.target.value, false)}
           />
-          <button type="button" class="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Search</button>
+          <button type="button" class="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" @click=${this.emitSearch}>Search</button>
           ${this.getAdvancedSearchToggle()}
         </div>
       </div>
