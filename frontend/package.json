@@ -6,12 +6,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean-dist": "rm -rf dist && mkdir -p dist/assets",
+    "copy-assets": "cp -r src/assets/* dist/assets",
+    "copy-files": "npm run copy-assets",
+    "init": "npm run clean-dist && npm run copy-files",
     "lint:js": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
     "analyze": "cem analyze --litelement",
-    "start": "concurrently -k -r \"tailwindcss -i src/tailwind.css -o src/tw.css --watch\" \"twlit --input src/tw.css --output src/tw.js\" \"parcel index.html\""
+    "start": "npm run init && concurrently -k -r \"tailwindcss -i src/tailwind.css -o src/tw.css --watch\" \"twlit --input src/tw.css --output src/tw.js\" \"parcel src/index.html\""
   },
   "dependencies": {
+    "@vaadin/router": "^1.7.5",
     "lit": "^2.0.2",
     "twlit": "^0.0.1-alpha.37"
   },

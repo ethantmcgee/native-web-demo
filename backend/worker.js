@@ -22,15 +22,31 @@ async function searchYoutube(queryOptions) {
   }).then((resp) => resp.json());
 };
 
+async function getStatistics(videos) {
+  const ids = videos.items.map(x => x.id.videoId);
+  let url = `https://www.googleapis.com/youtube/v3/videos?key=${GOOGLE_API_KEY}&id=${ids.join(",")}&part=statistics`;
+  return fetch(url, {
+    method: "GET"
+  }).then((resp) => resp.json())
+  .then((data) => {
+    for (const video of videos.items) {
+      const stats = data.items.find(x => x.id === video.id.videoId);
+      video.statistics = stats.statistics;
+    }
+    return videos;
+  });
+}
+
 export default {
   async fetch(request) {
     const corsHeaders = {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "localhost:1234,native.ethantmcgee.com,youtube-searcher.bulletshot60.workers.dev",
       "Access-Control-Allow-Methods": "POST,OPTIONS",
       "Access-Control-Max-Age": "86400"
     };
     async function handleRequest(request2) {
-      const response = await searchYoutube('');
+      const body = await request.json();
+      const response = await getStatistics(await searchYoutube(body));
       return new Response(JSON.stringify(response), {
         headers: {
           "Content-type": "application/json",
