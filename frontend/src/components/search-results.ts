@@ -1,11 +1,16 @@
 import { LitElement, html, css } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import { property, customElement, property } from 'lit/decorators.js';
 // @ts-ignore
 import { TWStyles } from './../tw.js';
 
 @customElement('search-results')
 export class SearchResults extends LitElement {
   static styles = [TWStyles];
+
+  @property()
+  protected headers = [];
+  @property()
+  protected items = [];
 
   render() {
     return html`

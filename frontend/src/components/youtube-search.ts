@@ -16,6 +16,7 @@ export class YoutubeSearch extends LitElement {
 
   @state()
   protected _loading = true;
+
   @state()
   protected _page = true;
   @state()
@@ -24,16 +25,42 @@ export class YoutubeSearch extends LitElement {
   protected _nextToken = true;
   @state()
   protected _prevToken = true;
+
   @state()
   protected _search = true;
+
+  @state()
+  protected _headers = [{
+    "name": "Title",
+    "css": "",
+    "property": (x) => x.title,
+    "template": (x, item) => html``
+  }, {
+    "name": "Title",
+    "css": "",
+    "property": (x) => x.title,
+    "template": (x, item) => html``
+  }, {
+    "name": "Title",
+    "css": "",
+    "property": (x) => x.title,
+    "template": (x, item) => html``
+  }, {
+    "name": "Title",
+    "css": "",
+    "property": (x) => x.title,
+    "template": (x, item) => html``
+  }];
+  @state()
+  protected _items = [];
   
   getSearchResults() {
     if(this._loading) {
       return html`<loading-wheel></loading-wheel>`;
     } else {
       return html`
-      <search-results></search-results>
-      <search-paging></search-paging>
+        <search-results></search-results>
+        <search-paging></search-paging>
       `;
     }
   }
