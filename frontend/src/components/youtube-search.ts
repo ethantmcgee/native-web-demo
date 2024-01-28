@@ -29,9 +29,9 @@ export class YoutubeSearch extends LitElement {
   protected _prevToken = null;
 
   @state()
-  protected _search = true;
+  protected _search = {};
   @state()
-  protected _pageToken = true;
+  protected _pageToken = null;
 
   @state()
   protected _headers = [{
