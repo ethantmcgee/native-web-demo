@@ -24,12 +24,36 @@ export class SearchPaging extends LitElement {
     const options = [];
     for(const option of PER_PAGE_OPTIONS) {
       if(this.perPage === option) {
-        options.push(html``);
+        options.push(html`<option value="${option}" selected>${option}</option>`);
       } else {
-        options.push(html``);
+        options.push(html`<option value="${option}">${option}</option>`);
       }
     }
     return options;
+  }
+
+  firePerPage(e) {
+    this.dispatchEvent(new CustomEvent('perPage', {
+      detail: {
+        perPage: parseInt(e.target.options[e.target.selectedIndex].value)
+      }
+    }))
+  }
+
+  firePrev() {
+    this.dispatchEvent(new CustomEvent('prev', {
+      detail: {
+        token: this.prevToken
+      }
+    }))
+  }
+
+  fireNext() {
+    this.dispatchEvent(new CustomEvent('next', {
+      detail: {
+        token: this.nextToken
+      }
+    }))
   }
 
   render() {
@@ -43,12 +67,14 @@ export class SearchPaging extends LitElement {
             </button>
             ` :
             html`
-            <button type="button" class="text-sm font-semibold leading-6 text-blue-500">
+            <button type="button" class="text-sm font-semibold leading-6 text-blue-500" @click=${this.firePrev}>
               Previous
             </button>
             `
         }
-
+        <select id="sortBy" name="sortBy" class="mt-1 block rounded-md border-0 py-1 pl-1 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" @change=${this.firePerPage}>
+          ${this.getOptions()}
+        </select>
         <p className="text-xs">
           per page /
           Showing ${(this.page - 1) * this.perPage + 1} - ${this.page * this.perPage} of ${this.total}
@@ -61,7 +87,7 @@ export class SearchPaging extends LitElement {
             </button>
             ` :
             html`
-            <button type="button" class="text-sm font-semibold leading-6 text-blue-500">
+            <button type="button" class="text-sm font-semibold leading-6 text-blue-500" @click=${this.fireNext}>
               Next
             </button>
             `
