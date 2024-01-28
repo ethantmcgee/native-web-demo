@@ -78,6 +78,7 @@ export class YoutubeSearch extends LitElement {
 
   handlePerPage(e) {
     this._page = 1;
+    this._pageToken = null;
     this._perPage = e.detail.perPage;
     this.doSearch();
   }
@@ -90,6 +91,7 @@ export class YoutubeSearch extends LitElement {
 
   handleSearch(e) {
     this._page = 1;
+    this._pageToken = null;
     this._search = e.detail;
     this.doSearch();
   }
