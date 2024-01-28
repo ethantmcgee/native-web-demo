@@ -33,7 +33,7 @@ UI Components copied from [Tailwind UI](https://tailwindui.com/) and [Loading IO
 1. Go to Cloudflare (or any other lambda provider).
 1. Create a new Worker.
 1. Paste the provided script (with your key) into the definition and deploy.
-1. The provided URL should be placed at the top of the `search-base.ts` file in the `frontend/src/` folder.
+1. The provided URL should be placed at the top of the `youtube-search.ts` file in the `frontend/src/components` folder.
 
 ## Backend API Details
 
