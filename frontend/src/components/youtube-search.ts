@@ -37,14 +37,14 @@ export class YoutubeSearch extends LitElement {
   protected _headers = [{
     "name": "Thumbnail",
     "css": "w-1/3 lg:w-1/6",
-    "property": (x) => x.snippet.thumbnails.default.url,
+    "property": (x) => x.snippet?.thumbnails?.default?.url,
     "template": (x, item) => html`
     <img src="${x}" width="120"/>
     `
   }, {
     "name": "Title",
     "css": "text-blue-500 w-2/3 lg:w-2/6",
-    "property": (x) => x.snippet.title,
+    "property": (x) => x.snippet?.title,
     "template": (x, item) => html`
     <a class="text-blue-500 underline" href="https://www.youtube.com/watch?v=${item.id.videoId}">
       ${x}
@@ -53,11 +53,11 @@ export class YoutubeSearch extends LitElement {
   }, {
     "name": "Description",
     "css": "hidden md:table-cell text-gray-500 lg:w-2/6",
-    "property": (x) => x.snippet.description
+    "property": (x) => x.snippet?.description
   }, {
     "name": "Comment Count",
     "css": "hidden md:table-cell lg:w-1/6",
-    "property": (x) => x.statistics.commentCount,
+    "property": (x) => x.statistics?.commentCount,
     "template": (x, item) => x ? html`
     <div class="flex gap-x-1.5">
       ${x}
