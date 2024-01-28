@@ -10,7 +10,8 @@
     "copy-assets": "cp -r src/assets/* dist/assets",
     "copy-files": "npm run copy-assets",
     "init": "npm run clean-dist && npm run copy-files && tailwindcss -i src/tailwind.css -o src/tw.css",
-    "start": "npm run init && concurrently -k -r \"tailwindcss -i src/tailwind.css -o src/tw.css --watch\" \"twlit --input src/tw.css --output src/tw.js\" \"parcel src/index.html\""
+    "start": "npm run init && concurrently -k -r \"tailwindcss -i src/tailwind.css -o src/tw.css --watch\" \"twlit --input src/tw.css --output src/tw.js\" \"parcel src/index.html\"",
+    "build": "npm run init && tailwindcss -i src/tailwind.css -o src/tw.css && parcel build src/index.html"
   },
   "dependencies": {
     "@vaadin/router": "^1.7.5",
