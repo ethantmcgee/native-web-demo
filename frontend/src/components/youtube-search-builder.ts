@@ -49,23 +49,23 @@ export class YoutubeSearchBuiler extends LitElement {
     if(this._advanced) {
       return html`
       <div class="flex items-center">
-        <button type="button" class="bg-blue-600 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2" role="switch" aria-checked="true" @click="${this.toggleAdvanced}">
-          <span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
-        </button>
-        <span class="ml-3 text-sm">
-          <span class="font-medium text-gray-900">Advanced</span>
-        </span>
+        <div class="flex h-6 items-center">
+          <input id="advanced" aria-describedby="comments-description" name="advanced" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" checked @click=${this.toggleAdvanced}>
+        </div>
+        <div class="ml-3 text-sm leading-6">
+          <label for="comments" class="font-medium text-gray-900">Advanced</label>
+        </div>
       </div>
       `
     } else {
       return html`
       <div class="flex items-center">
-        <button type="button" class="bg-gray-200 relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2" role="switch" aria-checked="false" @click="${this.toggleAdvanced}">
-          <span aria-hidden="true" class="translate-x-0 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
-        </button>
-        <span class="ml-3 text-sm">
-          <span class="font-medium text-gray-900">Advanced</span>
-        </span>
+        <div class="flex h-6 items-center">
+          <input id="advanced" aria-describedby="comments-description" name="advanced" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600" @click=${this.toggleAdvanced}>
+        </div>
+        <div class="ml-3 text-sm leading-6">
+          <label for="comments" class="font-medium text-gray-900">Advanced</label>
+        </div>
       </div>
       `
     }
@@ -74,7 +74,7 @@ export class YoutubeSearchBuiler extends LitElement {
   getAdvancedSearchBox() {
     if(this._advanced) {
       return html`
-      <div class="mt-2 flex justify-center gap-x-1.5">
+      <div class="mt-2 grid grid-cols-2 md:flex md:justify-center gap-x-1.5">
         <div>
           <label for="publishedAfter" class="block text-sm font-medium leading-6 text-gray-900">Published After</label>
           <div class="mt-1">

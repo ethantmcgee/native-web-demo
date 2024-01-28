@@ -659,6 +659,14 @@ video {
   margin-top: 2rem;
 }
 
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.mt-1\\.5 {
+  margin-top: 0.375rem;
+}
+
 .block {
   display: block;
 }
@@ -683,6 +691,10 @@ video {
   display: flow-root;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -699,24 +711,20 @@ video {
   height: 2rem;
 }
 
-.w-1\\/2 {
-  width: 50%;
+.h-4 {
+  height: 1rem;
 }
 
-.w-1\\/5 {
-  width: 20%;
-}
-
-.w-1\\/6 {
-  width: 16.666667%;
+.w-1\\/3 {
+  width: 33.333333%;
 }
 
 .w-11 {
   width: 2.75rem;
 }
 
-.w-2\\/6 {
-  width: 33.333333%;
+.w-2\\/3 {
+  width: 66.666667%;
 }
 
 .w-5 {
@@ -735,12 +743,12 @@ video {
   width: 100%;
 }
 
-.w-1\\/3 {
-  width: 33.333333%;
+.w-8 {
+  width: 2rem;
 }
 
-.w-2\\/3 {
-  width: 66.666667%;
+.w-4 {
+  width: 1rem;
 }
 
 .min-w-full {
@@ -771,6 +779,14 @@ video {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .items-center {
@@ -829,10 +845,6 @@ video {
   overflow-x: auto;
 }
 
-.whitespace-nowrap {
-  white-space: nowrap;
-}
-
 .text-wrap {
   text-wrap: wrap;
 }
@@ -845,6 +857,10 @@ video {
   border-radius: 0.375rem;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .border-0 {
   border-width: 0px;
 }
@@ -855,6 +871,11 @@ video {
 
 .border-transparent {
   border-color: transparent;
+}
+
+.border-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
 .bg-blue-600 {
@@ -1024,6 +1045,11 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1170,8 +1196,20 @@ video {
     display: flex;
   }
 
+  .sm\\:grid {
+    display: grid;
+  }
+
+  .sm\\:w-1\\/2 {
+    width: 50%;
+  }
+
   .sm\\:flex-auto {
     flex: 1 1 auto;
+  }
+
+  .sm\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sm\\:items-center {
@@ -1202,12 +1240,16 @@ video {
 }
 
 @media (min-width: 768px) {
-  .md\\:visible {
-    visibility: visible;
+  .md\\:flex {
+    display: flex;
   }
 
   .md\\:table-cell {
     display: table-cell;
+  }
+
+  .md\\:justify-center {
+    justify-content: center;
   }
 }
 
