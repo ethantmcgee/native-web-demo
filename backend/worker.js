@@ -31,7 +31,8 @@ async function getStatistics(videos) {
   .then((data) => {
     for (const video of videos.items) {
       const stats = data.items.find(x => x.id === video.id.videoId);
-      video.statistics = stats.statistics;
+      console.log(stats);
+      video.statistics = stats?.statistics;
     }
     return videos;
   });
@@ -40,8 +41,9 @@ async function getStatistics(videos) {
 export default {
   async fetch(request) {
     const corsHeaders = {
-      "Access-Control-Allow-Origin": "localhost:1234,native.ethantmcgee.com,youtube-searcher.bulletshot60.workers.dev",
+      "Access-Control-Allow-Origin": "https://native.ethantmcgee.com",
       "Access-Control-Allow-Methods": "POST,OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Max-Age": "86400"
     };
     async function handleRequest(request2) {
